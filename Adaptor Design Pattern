@@ -1,0 +1,35 @@
+// "static void main" must be defined in a public class.
+public class Main {
+
+    public static void main(String[] args) {
+        BankAPI bankapi=new YesBankAdapter();
+        bankapi.sendMoney();
+        BankAPI bankapi1=new ICICIBankAdapter();
+        bankapi1.sendMoney();
+    }
+}
+interface BankAPI{
+    public void sendMoney();
+}
+class YesBank{
+    public void TransferMoney(){
+        System.out.println("Yes Bank Money Transfer!!");
+    }
+}
+class ICICIBank{
+    public void MoneyDeposite(){
+        System.out.println("ICICI Bank Money Deposite!!");
+    }
+}
+class YesBankAdapter implements BankAPI{
+    YesBank yesbank=new YesBank();
+    public void sendMoney(){
+        yesbank.TransferMoney();
+    }
+}
+class ICICIBankAdapter implements BankAPI{
+        ICICIBank icicibank=new ICICIBank();
+    public void sendMoney(){
+        icicibank.MoneyDeposite();
+    }
+}
